@@ -10,11 +10,11 @@ builder.Services.AddControllers();
 
 var mySqlFactory = DbFactorySelector.GetConnection(DBType.MySQL, "ConnectionString", "AnaMakine");
 
-builder.Services.AddScoped<IDapperFactory>(mySqlFactory);
+builder.Services.AddSingleton<IDapperFactory>(mySqlFactory);
 
 var postgreSQLFactory = DbFactorySelector.GetConnection(DBType.PostgreSQL, "ConnectionString", "AnaMakine");
 
-builder.Services.AddScoped<IDapperFactory>(postgreSQLFactory);
+builder.Services.AddSingleton<IDapperFactory>(postgreSQLFactory);
 
 builder.Services.AddScoped<IDapperMethods, DapperMethods>();
 
